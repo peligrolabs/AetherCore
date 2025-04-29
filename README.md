@@ -1,2 +1,2 @@
-# aether-godot-framework
-Aether Godot Framework.
+# aether-game-framework
+Aether Game Framework.
