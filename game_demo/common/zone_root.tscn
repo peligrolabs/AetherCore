@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ukfm8of6ugi"]
+
+[ext_resource type="Script" uid="uid://3785ob8jml0w" path="res://common/zone_root.gd" id="1_nbhn1"]
+[ext_resource type="Script" uid="uid://hqr7vpix2nui" path="res://common/player_character_multiplayer_spawner.gd" id="1_x82xn"]
+[ext_resource type="Script" uid="uid://biue86yme2pgx" path="res://common/zone_multiplayer_spawner.gd" id="3_ddrjq"]
+
+[node name="ZoneRoot" type="Node2D"]
+script = ExtResource("1_nbhn1")
+
+[node name="PlayerCharacterMultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+unique_name_in_owner = true
+spawn_path = NodePath("..")
+script = ExtResource("1_x82xn")
+
+[node name="ZoneMultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+unique_name_in_owner = true
+spawn_path = NodePath("..")
+script = ExtResource("3_ddrjq")
