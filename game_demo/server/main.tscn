@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4xsh732t2bek"]
+
+[ext_resource type="Script" uid="uid://7ihmxoibnb2t" path="res://server/main.gd" id="1_7be44"]
+[ext_resource type="PackedScene" uid="uid://6ukfm8of6ugi" path="res://common/zone_root.tscn" id="1_7u81u"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_7be44")
+
+[node name="ZoneRoot" parent="." instance=ExtResource("1_7u81u")]

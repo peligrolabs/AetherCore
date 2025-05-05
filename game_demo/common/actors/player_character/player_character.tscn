@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2j6yyvwc28uu"]
+
+[ext_resource type="Script" uid="uid://b8jtqe3hclt02" path="res://common/actors/player_character/player_character.gd" id="1_beoha"]
+[ext_resource type="Texture2D" uid="uid://0cqui5xoql1a" path="res://client/assets/kenney_roguelike-characters/roguelikeChar_transparent.png" id="2_24uom"]
+[ext_resource type="Script" uid="uid://bnybhybbtsec8" path="res://common/actors/player_character/client_multiplayer_synchronizer.gd" id="3_dfqoa"]
+[ext_resource type="Script" uid="uid://btd7ta6nkrvwo" path="res://common/actors/player_character/server_multiplayer_synchronizer.gd" id="4_nxamb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kip2m"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfqoa"]
+atlas = ExtResource("2_24uom")
+region = Rect2(0, 85, 16, 16)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nxamb"]
+properties/0/path = NodePath(".:input")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lpfk3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_beoha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kip2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = SubResource("AtlasTexture_dfqoa")
+
+[node name="ClientMultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_nxamb")
+visibility_update_mode = 2
+script = ExtResource("3_dfqoa")
+
+[node name="ServerMultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_lpfk3")
+visibility_update_mode = 1
+script = ExtResource("4_nxamb")
